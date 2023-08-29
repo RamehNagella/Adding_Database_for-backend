@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 const productRoutes = require("./routes/products");
 const authRoutes = require("./routes/auth");
+const db = require("./db");
 
 const app = express();
 
@@ -24,6 +25,25 @@ app.use((req, res, next) => {
 
 app.use("/products", productRoutes);
 app.use("/", authRoutes);
+// mongodb
+//   .connect(
+//     "mongodb+srv://rameshnagella272:BqowvhV2gSDEjUEV@cluster0.ulgnrjm.mongodb.net/?retryWrites=true&w=majority"
+//   )
+//   .then((client) => {
+//     console.log("connected!");
+//     client.close();
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 //add this link in product.js file to store the products data in database
-app.listen(3100);
+// app.listen(3100);
+
+db.initDb((err, db) => {
+  if (err) {
+    console.log(err);
+  } else {
+    app.listen(3100);
+  }
+});
