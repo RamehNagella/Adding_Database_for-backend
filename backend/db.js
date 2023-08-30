@@ -3,7 +3,7 @@ const { useCallback } = require("react");
 
 const MongoClient = mongodb.MongoClient;
 
-const mongodbUrl =
+const mongoDbUrl =
   "mongodb+srv://rameshnagella272:1RrzdBFXCh6Ir26J@cluster0.ulgnrjm.mongodb.net/shop?retryWrites=true&w=majority";
 
 let _db;
@@ -13,7 +13,7 @@ const initDb = (callback) => {
     console.log("Database is already initialized");
     return callback(null, _db);
   }
-  MongoClient.connect(mongodbUrl)
+  MongoClient.connect(mongoDbUrl)
     .then((client) => {
       _db = client;
       callback(null, _db);
