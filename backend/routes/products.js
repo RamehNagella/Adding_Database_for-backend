@@ -94,7 +94,7 @@ router.get("/", (req, res, next) => {
     // .limit(pageSize)
     // .toArray()
     .forEach((productDoc) => {
-      console.log("curserProd", productDoc);
+      // console.log("curserProd", productDoc);
       // return productDoc;
       productDoc.price = productDoc.price.toString();
       products.push(productDoc);
